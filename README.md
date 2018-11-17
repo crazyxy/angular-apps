@@ -1,2 +1,6 @@
 # angular-apps
-Angularjs app
+
+This repository contains multiple angular apps, which are under different branches.
+
+## dev env
+    Azure VM
