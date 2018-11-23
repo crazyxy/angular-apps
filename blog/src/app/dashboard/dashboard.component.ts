@@ -1,0 +1,30 @@
+/**
+ * @file             : dashboard.component.ts
+ * @author           : Yan Xue <xuey@microsoft.com>
+ * Date              : 22/11/2018
+ * Last Modified Date: 22/11/2018
+ * Last Modified By  : Yan Xue <xuey@microsoft.com>
+ */
+import { Component, OnInit } from '@angular/core';
+import { Hero } from '../hero';
+import { HeroService } from '../hero.service';
+
+@Component({
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.less']
+})
+export class DashboardComponent implements OnInit {
+  heroes: Hero[] = [];
+
+  constructor(private heroService: HeroService) { }
+
+  ngOnInit() {
+    this.getHeroes();
+  }
+
+  getHeroes(): void {
+    this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes.slice(1, 5));
+  }
+}

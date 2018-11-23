@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--
+ - File              : heroes.component.html
+ - Author            : Yan Xue <xuey@microsoft.com>
+ - Date              : 21/11/2018
+ - Last Modified Date: 23/11/2018
+ - Last Modified By  : Yan Xue <xuey@microsoft.com>
+-->
+<h2>My Heroes</h2>
+
+<div>
+  <label>Hero Name:
+    <input #heroName />
+  </label>
+  <button (click)="add(heroName.value); heroName.value=''">
+    add
+  </button>
+</div>
+
+
+<ul class="heroes">
+    <li *ngFor="let hero of heroes">
+        <a routerLink="/detail/{{hero.id}}">
+            <span class="badge">{{hero.id}}</span> {{hero.name}}
+        </a>
+        <button class="delete" title="delete hero" (click)="delete(hero)">x</button>
+    </li>
+</ul>
