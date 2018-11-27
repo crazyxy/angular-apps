@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!--
+ - File              : blog-list.component.html
+ - Author            : Yan Xue <xuey@microsoft.com>
+ - Date              : 23/11/2018
+ - Last Modified Date: 23/11/2018
+ - Last Modified By  : Yan Xue <xuey@microsoft.com>
+-->
+
+<div class="blog-list">
+  <div class="blog-item" *ngFor="let blog of blogs">
+    <h1><span class="title">{{blog.title}}</span></h1>
+    
+    <div class="blog-info">
+      <span class="badge badge-pill badge-info"><i class="fa fa-clock-o" aria-hidden="true"></i> {{blog.publishedDate}}</span>
+      &nbsp;
+      <span class="badge badge-pill badge-info"><i class="fa fa-eye" aria-hidden="true"></i> {{blog.view}}</span>
+    </div>
+
+   <span class="content">{{blog.content}}</span>
+  </div>
+</div>
