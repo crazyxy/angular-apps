@@ -14,9 +14,9 @@
     <div class="blog-info">
       <span class="badge badge-pill badge-info"><i class="fa fa-clock-o" aria-hidden="true"></i> {{blog.publishedDate}}</span>
       &nbsp;
-      <span class="badge badge-pill badge-info"><i class="fa fa-eye" aria-hidden="true"></i> {{blog.view}}</span>
+      <span class="badge badge-pill badge-info"><i class="fa fa-eye" aria-hidden="true"></i> {{blog.viewCount}}</span>
     </div>
 
-   <span class="content">{{blog.content}}</span>
+   <span class="content" [innerHtml]="blog.content"></span>
   </div>
 </div>

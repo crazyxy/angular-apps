@@ -18,7 +18,7 @@ import { Blog } from '../models/blog';
 })
 export class BlogListComponent implements OnInit {
   blogs: Blog[];
-
+  
   constructor(private blogService: BlogService) { }
 
   ngOnInit() {
@@ -26,6 +26,6 @@ export class BlogListComponent implements OnInit {
   }
   
   getBlogs() {
-    this.blogService.getBlogs().subscribe(blogs => this.blogs = blogs);
+    this.blogService.get().subscribe(blogs => this.blogs = blogs);
   }
 }

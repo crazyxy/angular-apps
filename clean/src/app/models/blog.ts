@@ -12,6 +12,6 @@ export class Blog{
   published: boolean;
   publishedDate: string;
   content: string;
-  like: number;
-  view: number;
+  likeCount: number;
+  viewCount: number;
 };
