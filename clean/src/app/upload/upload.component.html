@@ -1,0 +1,17 @@
+<div class="upload">
+  <div class="input-group upload-input">
+    <input [(ngModel)]="title" type="text" class="form-control" placeholder="Title" aria-label="Title">
+  </div>
+
+  <div class="input-group upload-input">
+    <div class="custom-file">
+      <input [(ngModel)]="postFile" type="file" class="custom-file-input" id="uploadFile" (change)="fileChangeEvent($event)" placeholder="Upload file"
+        accept=".md">
+      <label class="custom-file-label" for="uploadFile">{{filename}}</label>
+    </div>
+  </div>
+
+  <div class="input-group upload-input">
+    <button class="btn btn-outline-primary" type="button" (click)="upload()">Submit</button>
+  </div>
+</div>

@@ -7,7 +7,7 @@
  - Last Modified By  : Yan Xue <xuey@microsoft.com>
 -->
 
-<div class="blog-list">
+<div class="blog-list" *ngIf="blogs">
   <div class="blog-item" *ngFor="let blog of blogs">
     <h1><span class="title">{{blog.title}}</span></h1>
     

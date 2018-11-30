@@ -6,16 +6,16 @@
  * Last Modified By  : Yan Xue <xuey@microsoft.com>
  */
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import * as Showdown from 'showdown';
 
 import { Blog } from './models/blog';
-import { Config, ConfigService } from './config.service';
+import { HttpService } from './http.service';
 
-class BlogModel{
+class BlogModel {
   id: number;
   title: string;
   published: boolean;
@@ -29,47 +29,33 @@ class BlogModel{
   providedIn: 'root'
 })
 export class BlogService {
-  hostUrl: string;
-  error: any;
-
-  blogs: Blog[] = [];
-  
-  constructor(
-    private http : HttpClient,
-    private configService : ConfigService) { 
-
-    configService.getConfig().subscribe(
-      (data: Config) => {
-        this.hostUrl = data.hostUrl;
-        var converter = new Showdown.Converter;
-        
-        this.http.get(`${this.hostUrl}/api/blogs`).subscribe(
-          (data: BlogModel[]) => {
-            data.forEach(blog => {
-              this.blogs.push({
-                id: 1,
-                title: blog.title,
-                published: blog.published,
-                publishedDate: blog.publishedDate,
-                content: converter.makeHtml(blog.content),
-                likeCount: blog.likeCount,
-                viewCount: blog.viewCount
-              })
-
-              console.log(this.blogs[0].content);
-            })
-          },
-          error => console.error(error)
-        )
-      },
-      error =>{
-        this.error = error
-        console.error(error);
-      }
-    );
+  constructor(private httpService: HttpService) {
   }
 
-  get(): Observable<Blog[]>{
-    return of(this.blogs);
+  get(): Observable<Blog[]> {
+    return this.httpService.get("api/blogs").pipe(map(data => data.map(b => this.toBlog(b))));
+  }
+
+  startUpload(title, fileName): Observable<string> {
+    return this.httpService.post("api/blogs/startupload", {Title: title, FileName: fileName});
+  }
+
+  completeUpload(uploadUrl: string, file: File): Observable<any>{
+    return this.httpService.uploadFile(uploadUrl, file);
+  }
+
+  toBlog(blog: BlogModel): Blog {
+    let converter = new Showdown.Converter;
+    let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+    return {
+      id: blog.id,
+      title: blog.title,
+      published: blog.published,
+      publishedDate: new Date(blog.publishedDate).toLocaleDateString("en-US", options),
+      content: converter.makeHtml(blog.content),
+      likeCount: blog.likeCount,
+      viewCount: blog.viewCount
+    };
   }
 }
