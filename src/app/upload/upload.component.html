@@ -5,7 +5,7 @@
 
   <div class="input-group upload-input">
     <div class="custom-file">
-      <input [(ngModel)]="postFile" type="file" class="custom-file-input" id="uploadFile" (change)="fileChangeEvent($event)" placeholder="Upload file"
+      <input type="file" class="custom-file-input" id="uploadFile" (change)="fileChangeEvent($event)" placeholder="Upload file"
         accept=".md">
       <label class="custom-file-label" for="uploadFile">{{filename}}</label>
     </div>
