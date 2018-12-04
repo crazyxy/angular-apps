@@ -12,8 +12,8 @@ import { map } from 'rxjs/operators';
 
 import * as Showdown from 'showdown';
 
-import { Blog } from './models/blog';
-import { HttpService } from './http.service';
+import { Blog } from '../../models/blog';
+import { HttpService } from '../http/http.service';
 
 class BlogModel {
   id: number;

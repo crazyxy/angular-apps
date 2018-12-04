@@ -7,9 +7,9 @@
  */
 import { Component, OnInit } from '@angular/core';
 
-import { BlogService } from '../blog.service';
+import { BlogService } from '../../services/blog/blog.service';
 
-import { Blog } from '../models/blog';
+import { Blog } from '../../models/blog';
 
 @Component({
   selector: 'app-blog-list',

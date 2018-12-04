@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { BlogService } from '../blog.service';
+import { BlogService } from '../../services/blog/blog.service';
 
 @Component({
   selector: 'app-upload',

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 
-import { Config, ConfigService } from './config.service';
+import { Config, ConfigService } from '../config/config.service';
 import { Observable, Observer } from 'rxjs';
 import { retry } from 'rxjs/operators';
 
