@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BlogService } from '../../services/blog/blog.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-upload',
@@ -13,7 +14,7 @@ export class UploadComponent implements OnInit {
   @Input() title: string;
   file: File;
 
-  constructor(private blogService: BlogService) { }
+  constructor(private router: Router, private blogService: BlogService) { }
 
   ngOnInit() {
   }
@@ -22,7 +23,8 @@ export class UploadComponent implements OnInit {
     this.blogService.startUpload(this.title, this.file.name).subscribe(
       (uploadUrl: string) => {
         this.blogService.completeUpload(uploadUrl, this.file).subscribe(
-          data => console.log(`Complete upload. Response ${data}`)
+          data => this.router.navigate(['/home']),
+          error => console.log(error)
         );
       },
       error => console.error(error)

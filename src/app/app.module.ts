@@ -9,6 +9,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { BlogListComponent } from './components/blog-list/blog-list.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { UploadComponent } from './components/upload/upload.component';
+import { LoginComponent } from './components/login/login.component';
+import { OathCallbackComponent } from './components/oath-callback/oath-callback.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { UploadComponent } from './components/upload/upload.component';
     NavbarComponent,
     BlogListComponent,
     FooterComponent,
-    UploadComponent
+    UploadComponent,
+    LoginComponent,
+    OathCallbackComponent
   ],
   imports: [
     BrowserModule,

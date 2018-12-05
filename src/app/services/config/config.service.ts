@@ -25,6 +25,15 @@ export class ConfigService {
       );
   }
 
+  public get getAdalConfig(): any{
+    return {
+      tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
+      clientId: '9bbf9955-678f-462a-bd0b-9980fe0d0ebe',
+      redirectUri: window.location.origin + '/',
+      postLogoutRedirectUri: window.location.origin + '/'
+    };
+  }
+
   private handleError(error: HttpErrorResponse){
     if(error.error instanceof ErrorEvent){
       console.error('An error occurred: ', error.error.message);

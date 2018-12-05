@@ -36,6 +36,10 @@ export class BlogService {
     return this.httpService.get("api/blogs").pipe(map(data => data.map(b => this.toBlog(b))));
   }
 
+  search(query: string): Observable<Blog[]> {
+    return this.httpService.get(`api/blogs?titleContains=${query}`).pipe(map(data=> data.map(b => this.toBlog(b))));
+  }
+
   startUpload(title, fileName): Observable<string> {
     return this.httpService.post("api/blogs/startupload", {Title: title, FileName: fileName});
   }

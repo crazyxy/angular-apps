@@ -3,11 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { BlogListComponent } from './components/blog-list/blog-list.component';
 import { UploadComponent } from './components/upload/upload.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'home', component: BlogListComponent},
-  {path: 'upload', component: UploadComponent }
+  {path: '', redirectTo: '/blogs', pathMatch: 'full'},
+  {path: 'home', component: BlogListComponent },
+  {path: 'blogs/:search', component: BlogListComponent},
+  {path: 'blogs', component: BlogListComponent},
+  {path: 'upload', component: UploadComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

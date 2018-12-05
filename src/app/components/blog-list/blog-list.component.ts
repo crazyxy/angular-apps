@@ -6,6 +6,7 @@
  * Last Modified By  : Yan Xue <xuey@microsoft.com>
  */
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { BlogService } from '../../services/blog/blog.service';
 
@@ -19,13 +20,16 @@ import { Blog } from '../../models/blog';
 export class BlogListComponent implements OnInit {
   blogs: Blog[];
   
-  constructor(private blogService: BlogService) { }
+  constructor(private route: ActivatedRoute, private blogService: BlogService) { }
 
   ngOnInit() {
-    this.getBlogs();
-  }
-  
-  getBlogs() {
-    this.blogService.get().subscribe(blogs => this.blogs = blogs);
+    this.route.paramMap.subscribe(params => {
+      var search = params.get('search');
+      if(!search){
+        this.blogService.get().subscribe(blogs => this.blogs = blogs);
+      }else{
+        this.blogService.search(search).subscribe(blogs => this.blogs = blogs);
+      }
+    });
   }
 }
