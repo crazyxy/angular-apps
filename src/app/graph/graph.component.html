@@ -7,8 +7,8 @@
  - Last Modified By  : Yan Xue <xuey@microsoft.com>
 -->
 <div class="graph">
-  <div *ngFor="let i of Arr(row).fill(1)" class="row">
-    <div *ngFor="let j of Arr(col).fill(1)" class="cell">
+  <div *ngFor="let i of rowArr" class="row">
+    <div *ngFor="let j of colArr" class="cell" id={{i*col+j}} [ngStyle]="{'background-color': color[i*col+j]}">
     </div>
   <div>
 </div>
