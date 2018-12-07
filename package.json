@@ -6,6 +6,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node build/server.js"
   },
+  "engines": {
+    "node": ">=10.13.0",
+    "npm": ">=6.4.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/crazyxy/angular-apps.git"
