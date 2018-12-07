@@ -106,8 +106,6 @@ export class GraphComponent implements OnInit {
         this.dir = 1;
       }
     }
-
-    console.log(event.key + " " + this.dir);
   }
 
   generateFood(): number[] {
