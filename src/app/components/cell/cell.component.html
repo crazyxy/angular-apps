@@ -1,5 +1,37 @@
-<div *ngIf="stock">
-  <span>{{stock.companyName}}</span>
-  <span>{{stock.description}}</span>
-  <span>{{stock.symbol}}</span>
-</div>
+<ul class="list-group wardrobe">
+  <li class="list-group-item list-group-item">
+    <div *ngIf="company | async; let company">
+      <img *ngIf="logo | async; let logo" src="{{logo.url}}" class="logo" />
+      <div class="name">
+        <div class="row">
+          <div class="col-12">
+            <span class="companyName"><a href="{{company.website}}">{{company.companyName}}</a></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <span>{{company.exchange}}: {{company.symbol}}</span>
+          </div>
+          <div class="col-4">
+            <span *ngIf="price | async; let price">${{price}}</span>
+          </div>
+        </div>
+      </div>
+      <!-- <span>{{company.description}}</span> -->
+    </div>
+  </li>
+  <li class="list-group-item">
+    <div echarts [options]="chartOption" class="demo-chart"></div>
+  </li>
+  <li class="list-group-item">
+    <a data-toggle="collapse" href="#news_{{symbol}}">News</a>
+    <div class="list-group panel-collapse collapse" id="news_{{symbol}}">
+      <li *ngFor="let x of news | async" class="list-group-item">
+        {{x.datetime | date}}
+        <a href="{{x.url}}">{{x.headline}}</a>
+      </li>
+    </div>
+  </li>
+
+  <!-- <li class="list-group-item">Vestibulum at eros</li> -->
+</ul>

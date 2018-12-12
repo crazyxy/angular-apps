@@ -1,3 +1,12 @@
-<div *ngFor="let symbol of symbols">
-  <app-cell [symbol]='symbol'></app-cell>
+<!-- <div class="gallery row">
+  <div *ngFor="let symbol of symbols" class="col-4">
+  </div>
+</div> -->
+
+<div *ngFor="let symbol of symbols; let i = index">
+  <div *ngIf="i % 3 == 0" class="row gallery">
+    <app-cell *ngIf="i < symbols.length" [symbol]='symbols[i]' class="col-4"></app-cell>
+    <app-cell *ngIf="i + 1 < symbols.length" [symbol]='symbols[i+1]' class="col-4"></app-cell>
+    <app-cell *ngIf="i + 2 < symbols.length" [symbol]='symbols[i+2]' class="col-4"></app-cell>  
+  </div>
 </div>
