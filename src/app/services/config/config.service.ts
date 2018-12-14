@@ -29,7 +29,7 @@ export class ConfigService {
     return {
       tenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47',
       clientId: '9bbf9955-678f-462a-bd0b-9980fe0d0ebe',
-      redirectUri: window.location.origin + '/',
+      redirectUri: window.location.origin + '/id_token',
       postLogoutRedirectUri: window.location.origin + '/'
     };
   }

@@ -12,6 +12,9 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private adalService: AdalService) { }
 
   ngOnInit() {
+    // if(this.adalService.isAuthenticated){
+    //   this.router.navigate(['home']);
+    // }
   }
 
   login(){

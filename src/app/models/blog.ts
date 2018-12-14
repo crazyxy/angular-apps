@@ -7,7 +7,7 @@
  */
 
 export class Blog{
-  id: number;
+  id: string;
   title: string;
   published: boolean;
   publishedDate: string;

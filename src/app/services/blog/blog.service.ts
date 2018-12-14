@@ -16,7 +16,7 @@ import { Blog } from '../../models/blog';
 import { HttpService } from '../http/http.service';
 
 class BlogModel {
-  id: number;
+  id: string;
   title: string;
   published: boolean;
   publishedDate: string;
@@ -46,6 +46,10 @@ export class BlogService {
 
   completeUpload(uploadUrl: string, file: File): Observable<any>{
     return this.httpService.uploadFile(uploadUrl, file);
+  }
+
+  like(id: string, userId: string): Observable<number>{
+    return this.httpService.post(`api/blogs/${id}/like`, {UserId: userId});
   }
 
   toBlog(blog: BlogModel): Blog {
