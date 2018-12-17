@@ -7,7 +7,7 @@ import * as stock from "./controllers/stock";
 export const app = express();
 
 // Configuration Section
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 8080);
 
 // Middleware
 app.use(compression());
